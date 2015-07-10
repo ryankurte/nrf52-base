@@ -41,4 +41,4 @@ include_directories(
 	)
 
 # Create ble library
-add_library(ble ${NRF_DRIVER_SOURCES})
+add_library(drivers-nrf ${NRF_DRIVER_SOURCES})

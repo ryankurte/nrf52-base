@@ -9,4 +9,4 @@ set(DEVICE_SOURCES
 include_directories(${CMAKE_CURRENT_LIST_DIR})
 
 # Create ble library
-add_library(device ${DEVICE_SOURCES})
+#add_library(device ${DEVICE_SOURCES})

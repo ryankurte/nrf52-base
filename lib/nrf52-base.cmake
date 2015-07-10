@@ -29,11 +29,14 @@ include(${CMAKE_CURRENT_LIST_DIR}/components/device/device.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/components/drivers_ext/drivers-ext.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/components/drivers_nrf/drivers-nrf.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/components/libraries/libraries.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/components/softdevice/softdevice.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/components/toolchain/toolchain.cmake)
+
 # Set compiler flags
 # Common arguments
 set(COMMON_DEFINITIONS "-Wextra -Wall -D${DEVICE} ${OPTIONAL_DEBUG_SYMBOLS}")
 set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -DSWI_DISABLE0 -DSOFTDEVICE_PRESENT -DNRF52 -DBOARD_PCA10036")
-set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS  -DCONFIG_GPIO_AS_PINRESET -DS132 -DBLE_STACK_SUPPORT_REQD");
+set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS  -DCONFIG_GPIO_AS_PINRESET -DS132 -DBLE_STACK_SUPPORT_REQD")
 set(DEPFLAGS "-MMD -MP")
 
 # Enable FLTO optimization if required
