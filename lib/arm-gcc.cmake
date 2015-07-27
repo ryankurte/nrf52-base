@@ -12,7 +12,13 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 # Set compiler paths. We force set so it doesn't run tests
 CMAKE_FORCE_C_COMPILER(${COMPILER_PREFIX}arm-none-eabi-gcc GNU)
 CMAKE_FORCE_CXX_COMPILER(${COMPILER_PREFIX}arm-none-eabi-g++ GNU)
+
 set(CMAKE_ASM_COMPILER ${COMPILER_PREFIX}arm-none-eabi-g++)
+set(CMAKE_RANLIB ${COMPILER_PREFIX}arm-none-eabi-ranlib)
+set(CMAKE_AR ${COMPILER_PREFIX}arm-none-eabi-ar)
+
+#set(CMAKE_C_LINK_EXECUTABLE ${COMPILER_PREFIX}arm-none-eabi-ld)
+#set(CMAKE_CXX_LINK_EXECUTABLE ${COMPILER_PREFIX}arm-none-eabi-ld)
 
 # Set other tools
 set(OBJSIZE ${COMPILER_PREFIX}arm-none-eabi-size)
