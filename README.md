@@ -12,4 +12,5 @@ STATUS: not yet working
 
 1. Run `./bootstrap.sh` to download the nRF52 SDK and pull the libraries into this project
 2. Run `mkdir build` to create a build directory
-3. 
+3. In the build directory, run `cmake ..` to initialize cmake
+4. In the build directory, run `make` to build the example project

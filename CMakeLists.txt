@@ -34,13 +34,7 @@ if(NOT CMAKE_BUILD_TYPE)
 set(CMAKE_BUILD_TYPE DEBUG)
 endif()
 
-##### Modules #####
-
-# Libraries can be added to the LIBS variable
-# or manually included here.
-
-# Add base libs (emlib, CMSIS, device files)
-include(${BASE_LOCATION}/lib/nrf52-base.cmake)
+set(QUIET_BUILD "")
 
 ##### Files #####
 
@@ -51,6 +45,22 @@ include_directories(${BASE_LOCATION}/work/include)
 set(SOURCES
 	${BASE_LOCATION}/work/source/main.c
 )
+
+##### Modules #####
+
+# Libraries can be added to the LIBS variable
+# or manually included here.
+# ie. include(${BASE_LOCATION}/my-cool-module/my-cool-module.cmake)
+
+# nRF components enabled here
+# Check out the related component folders for options
+set(DRIVERS_NRF hal common delay config gpiote trace pstorage timer ble_flash uart)
+set(LIBRARIES util trace timer scheduler button uart fifo)
+set(BLE_MODULES ble_advertising)
+set(BLE_SERVICES ble_nus)
+
+# Add base libs (emlib, CMSIS, device files)
+include(${BASE_LOCATION}/lib/nrf52-base.cmake)
 
 ##### Outputs #####
 

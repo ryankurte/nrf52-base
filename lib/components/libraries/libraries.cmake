@@ -1,30 +1,25 @@
 # Library Module
 
 # Add source files
-file(GLOB_RECURSE NRF_LIB_SOURCES ${CMAKE_CURRENT_LIST_DIR}/*/*.c)
 
-include_directories(
-	${CMAKE_CURRENT_LIST_DIR}
-	${CMAKE_CURRENT_LIST_DIR}/ant_fs
-	${CMAKE_CURRENT_LIST_DIR}/bootloader_dfu
-	${CMAKE_CURRENT_LIST_DIR}/button
-	${CMAKE_CURRENT_LIST_DIR}/console
-	${CMAKE_CURRENT_LIST_DIR}/crc16
-	${CMAKE_CURRENT_LIST_DIR}/fifo
-	${CMAKE_CURRENT_LIST_DIR}/gpiote
-	${CMAKE_CURRENT_LIST_DIR}/hci
-	${CMAKE_CURRENT_LIST_DIR}/ic_info
-	${CMAKE_CURRENT_LIST_DIR}/mem_manager
-	${CMAKE_CURRENT_LIST_DIR}/pwm
-	${CMAKE_CURRENT_LIST_DIR}/scheduler
-	${CMAKE_CURRENT_LIST_DIR}/sensorsim
-	${CMAKE_CURRENT_LIST_DIR}/sha256
-	${CMAKE_CURRENT_LIST_DIR}/simple_timer
-	${CMAKE_CURRENT_LIST_DIR}/timer
-	${CMAKE_CURRENT_LIST_DIR}/trace
-	${CMAKE_CURRENT_LIST_DIR}/uart
-	${CMAKE_CURRENT_LIST_DIR}/util
-	)
+set(NRF_LIB_SOURCES "")
+
+foreach(LIBRARY IN ITEMS ${LIBRARIES})
+	# Hacks for libraries that include things they shouldn't
+	if("${LIBRARY}" STREQUAL "timer")
+		# TODO: add other timer components if definitions exist
+		set(NRF_LIB_SOURCES 
+			${NRF_LIB_SOURCES} 
+			${CMAKE_CURRENT_LIST_DIR}/timer/app_timer.c
+			)
+		include_directories(${CMAKE_CURRENT_LIST_DIR}/timer)
+	else()
+		message("Added library: ${LIBRARY} at: ${CMAKE_CURRENT_LIST_DIR}/${LIBRARY}")
+		file(GLOB_RECURSE CURRENT_SOURCES ${CMAKE_CURRENT_LIST_DIR}/${LIBRARY}/*.c)
+		set(NRF_LIB_SOURCES ${NRF_LIB_SOURCES} ${CURRENT_SOURCES})
+		include_directories(${CMAKE_CURRENT_LIST_DIR}/${LIBRARY})
+	endif()
+endforeach(LIBRARY IN ${LIBRARIES})
 
 # Create ble library
 add_library(libraries ${NRF_LIB_SOURCES})
