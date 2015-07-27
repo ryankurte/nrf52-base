@@ -20,4 +20,6 @@ set(SOFTDEVICE_LD ${CMAKE_CURRENT_LIST_DIR}/${SOFTDEVICE_L}/toolchain/armgcc/arm
 
 add_library(softdevice ${SOFTDEVICE_SOURCES})
 
+set(LIBS ${LIBS} softdevice)
+
 endif(DEFINED SOFTDEVICE)

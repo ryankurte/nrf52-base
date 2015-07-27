@@ -18,11 +18,6 @@ if(NOT DEFINED SOFTDEVICE)
 	message("No Softdevice defined. Using default: ${SOFTDEVICE}")
 endif(NOT DEFINED SOFTDEVICE)
 
-if(NOT DEFINED FLASH_START)
-	set(FLASH_START 0x00000000)
-	message("No FLASH_START defined. Using default: ${FLASH_START}")
-endif(NOT DEFINED FLASH_START)
-
 # Determine core type
 set(CPU_TYPE "m4")
 
@@ -53,11 +48,13 @@ else()
 	set(OPTFLAGS "-Os")
 endif()
 
+set(LINKER_SCRIPT ${SOFTDEVICE_LD})
+
 # Build flags
 set(CMAKE_C_FLAGS "-std=gnu99 ${COMMON_DEFINITIONS} -mcpu=cortex-m4 -mthumb -mabi=aapcs --std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin --short-enums --specs=nano.specs ${DEPFLAGS}")
-set(CMAKE_CXX_FLAGS "${COMMON_DEFINITIONS} ${CPU_FIX} --specs=nano.specs ${DEPFLAGS}")
+set(CMAKE_CXX_FLAGS "${COMMON_DEFINITIONS} ${CPU_FIX} ${DEPFLAGS}")
 set(CMAKE_ASM_FLAGS "${COMMON_DEFINITIONS} -x assembler-with-cpp")
-set(CMAKE_EXE_LINKER_FLAGS "${COMMON_DEFINITIONS} -Xlinker -T${LINKER_SCRIPT} -mthumb -mabi=aapcs -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 --specs=nano.specs -lc -lnosys -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
+set(CMAKE_EXE_LINKER_FLAGS "${COMMON_DEFINITIONS} -Xlinker -T${LINKER_SCRIPT} -mthumb -mabi=aapcs -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -lc -lnosys -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
 
 # Set default inclusions
 set(LIBS -lgcc -lc -lnosys ${LIBS})

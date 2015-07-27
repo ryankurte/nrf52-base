@@ -23,3 +23,5 @@ endforeach(LIBRARY IN ${LIBRARIES})
 
 # Create ble library
 add_library(libraries ${NRF_LIB_SOURCES})
+
+set(LIBS ${LIBS} libraries)

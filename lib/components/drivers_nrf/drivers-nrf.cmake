@@ -22,3 +22,5 @@ endforeach(DRIVER IN ITEMS ${DRIVERS_NRF})
 
 # Create nrf driver library
 add_library(drivers-nrf ${NRF_DRIVER_SOURCES} ${NRF_DRIVER_NOSD_SOURCES})
+
+set(LIBS ${LIBS} drivers-nrf)

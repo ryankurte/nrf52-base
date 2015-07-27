@@ -30,3 +30,5 @@ endforeach(SERVICE IN ITEMS ${BLE_SERVICES})
 
 # Create ble library
 add_library(ble ${BLE_SOURCES})
+
+set(LIBS ${LIBS} ble)
