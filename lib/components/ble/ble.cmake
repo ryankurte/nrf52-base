@@ -1,5 +1,9 @@
 # BLE Module
 
+include_directories(
+	${CMAKE_CURRENT_LIST_DIR}/common
+	)
+
 # Add source files
 set(BLE_SOURCES
 	${CMAKE_CURRENT_LIST_DIR}/common/ble_advdata.c

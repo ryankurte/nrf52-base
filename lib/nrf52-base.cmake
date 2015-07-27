@@ -8,16 +8,19 @@ endif(NOT DEFINED DEVICE)
 
 # Convert to upper case
 string(TOUPPER ${DEVICE} DEVICE_U)
-message("Processor: ${DEVICE_U}")
 
 # Determine device family
 string(REGEX MATCH "^(NRF5[1-2])" CPU_FAMILY_U "${DEVICE_U}")
 string(TOLOWER ${CPU_FAMILY_U} CPU_FAMILY_L)
-message("Family: ${CPU_FAMILY_U}")
+
+if(NOT DEFINED SOFTDEVICE)
+	set(SOFTDEVICE "S132")
+	message("No Softdevice defined. Using default: ${SOFTDEVICE}")
+endif(NOT DEFINED SOFTDEVICE)
 
 if(NOT DEFINED FLASH_START)
-set(FLASH_START 0x00000000)
-message("No FLASH_START defined. Using default: ${FLASH_START}")
+	set(FLASH_START 0x00000000)
+	message("No FLASH_START defined. Using default: ${FLASH_START}")
 endif(NOT DEFINED FLASH_START)
 
 # Determine core type
@@ -36,7 +39,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/components/toolchain/toolchain.cmake)
 # Common arguments
 set(COMMON_DEFINITIONS "-Wextra -Wall -D${DEVICE} ${OPTIONAL_DEBUG_SYMBOLS}")
 set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -DSWI_DISABLE0 -DSOFTDEVICE_PRESENT -DNRF52 -DBOARD_PCA10036")
-set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS  -DCONFIG_GPIO_AS_PINRESET -DS132 -DBLE_STACK_SUPPORT_REQD")
+set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS}  -DCONFIG_GPIO_AS_PINRESET -DS132 -DBLE_STACK_SUPPORT_REQD")
 set(DEPFLAGS "-MMD -MP")
 
 # Enable FLTO optimization if required

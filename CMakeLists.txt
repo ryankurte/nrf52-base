@@ -49,7 +49,7 @@ include_directories(${BASE_LOCATION}/work/include)
 
 # Add project sources
 set(SOURCES
-	${BASE_LOCATION}/source/main.c
+	${BASE_LOCATION}/work/source/main.c
 )
 
 ##### Outputs #####

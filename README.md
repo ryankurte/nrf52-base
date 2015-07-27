@@ -1,1 +1,15 @@
 # nrf52-base
+
+STATUS: not yet working
+
+## TODO
+
+[ ] Sort out linker scripts (not yet using correct one[s], what is the correct one?)
+[ ] Set flash start based on softdevice selection
+[ ] Allow linking without a softdevice
+
+## Getting Started
+
+1. Run `./bootstrap.sh` to download the nRF52 SDK and pull the libraries into this project
+2. Run `mkdir build` to create a build directory
+3. 
