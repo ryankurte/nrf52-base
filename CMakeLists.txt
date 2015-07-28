@@ -26,7 +26,7 @@ include(${BASE_LOCATION}/lib/arm-gcc.cmake)
 
 # Set device
 if(NOT DEVICE)
-set(DEVICE nRF52)
+set(DEVICE nRF52832)
 endif()
 
 # Set build
@@ -73,8 +73,8 @@ target_link_libraries(${TARGET} ${LIBS})
 ##### Post build #####
 
 # Add post build commands
-#include(${BASE_LOCATION}/toolchain/post-build.cmake)
+include(${BASE_LOCATION}/lib/post-build.cmake)
 
 # Add JLink commands
-#include(${BASE_LOCATION}/toolchain/jlink.cmake)
+include(${BASE_LOCATION}/lib/jlink.cmake)
 
