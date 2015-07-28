@@ -55,7 +55,7 @@ set(LINKER_SCRIPT ${SOFTDEVICE_LD})
 set(CMAKE_C_FLAGS "-std=gnu99 ${COMMON_DEFINITIONS} ${DEPFLAGS}")
 set(CMAKE_CXX_FLAGS "${COMMON_DEFINITIONS} ${DEPFLAGS}")
 set(CMAKE_ASM_FLAGS "${COMMON_DEFINITIONS} -x assembler-with-cpp")
-set(CMAKE_EXE_LINKER_FLAGS "-Xlinker -T${LINKER_SCRIPT} -lc -lnosys -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
+set(CMAKE_EXE_LINKER_FLAGS "-Xlinker -L${LINKER_TEMPLATE_LOC} -T${LINKER_SCRIPT} -lc -lnosys -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
 
 # Set default inclusions
 set(LIBS -lgcc -lc -lnosys ${LIBS})
