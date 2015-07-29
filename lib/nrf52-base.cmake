@@ -32,10 +32,12 @@ include(${CMAKE_CURRENT_LIST_DIR}/components/toolchain/toolchain.cmake)
 
 # Set compiler flags
 # Common arguments
-set(COMMON_DEFINITIONS "-D${DEVICE} ${OPTIONAL_DEBUG_SYMBOLS} -mcpu=cortex-m4 -mthumb -mabi=aapcs --std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16")
-set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin --short-enums --specs=nano.specs")
+# --specs=nano.specs -D$(BOARD)
+set(COMMON_DEFINITIONS "${OPTIONAL_DEBUG_SYMBOLS} -D${DEVICE} -D${BOARD}")
+set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -mcpu=cortex-m4 -mthumb -mabi=aapcs --std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16")
+set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin")
 set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -DSWI_DISABLE0 -DSOFTDEVICE_PRESENT -DNRF52 -DBOARD_PCA10036")
-set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS}  -DCONFIG_GPIO_AS_PINRESET -DS132 -DBLE_STACK_SUPPORT_REQD")
+set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -DCONFIG_GPIO_AS_PINRESET -DS132 -DBLE_STACK_SUPPORT_REQD")
 set(DEPFLAGS "-MMD -MP")
 
 if(NOT DEFINED QUIET_BUILD)
@@ -55,7 +57,8 @@ set(LINKER_SCRIPT ${SOFTDEVICE_LD})
 set(CMAKE_C_FLAGS "-std=gnu99 ${COMMON_DEFINITIONS} ${DEPFLAGS}")
 set(CMAKE_CXX_FLAGS "${COMMON_DEFINITIONS} ${DEPFLAGS}")
 set(CMAKE_ASM_FLAGS "${COMMON_DEFINITIONS} -x assembler-with-cpp")
-set(CMAKE_EXE_LINKER_FLAGS "-Xlinker -L${LINKER_TEMPLATE_LOC} -T${LINKER_SCRIPT} -lc -lnosys -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
+#arch_paths_first
+set(CMAKE_EXE_LINKER_FLAGS "-Xlinker -L${LINKER_TEMPLATE_LOC} -T${LINKER_SCRIPT} -lc -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
 
 # Set default inclusions
 set(LIBS -lgcc -lc -lnosys ${LIBS})

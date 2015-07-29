@@ -1,9 +1,6 @@
-# BLE Module
+# Device Module
 
 # Add source files
-set(DEVICE_SOURCES
-	
-)
 
 # Add inclusions
 include_directories(${CMAKE_CURRENT_LIST_DIR})

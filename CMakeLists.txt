@@ -27,7 +27,9 @@ include(${BASE_LOCATION}/lib/arm-gcc.cmake)
 # Set device
 if(NOT DEVICE)
 set(DEVICE nRF52832)
+set(BOARD BOARD_PCA10036)
 endif()
+
 
 # Set build
 if(NOT CMAKE_BUILD_TYPE)

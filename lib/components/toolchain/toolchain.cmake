@@ -22,6 +22,6 @@ set(STARTUP_FILE ${CMAKE_CURRENT_LIST_DIR}/gcc/gcc_startup_nrf52.s)
 
 set(LINKER_TEMPLATE_LOC ${CMAKE_CURRENT_LIST_DIR}/gcc/)
 
-add_library(toolchain ${TOOLCHAIN_SOURCES})
+add_library(toolchain ${STARTUP_FILE} ${TOOLCHAIN_SOURCES})
 
 set(LIBS ${LIBS} toolchain)
