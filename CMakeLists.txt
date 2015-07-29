@@ -45,7 +45,7 @@ include_directories(${BASE_LOCATION}/work/include)
 
 # Add project sources
 set(SOURCES
-	${BASE_LOCATION}/work/source/uart_main.c
+	${BASE_LOCATION}/work/source/main.c
 	${BASE_LOCATION}/work/source/bsp.c
 	${BASE_LOCATION}/work/source/bsp_btn_ble.c
 )
