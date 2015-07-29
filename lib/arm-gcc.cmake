@@ -20,6 +20,10 @@ set(CMAKE_AR ${COMPILER_PREFIX}arm-none-eabi-ar)
 #set(CMAKE_C_LINK_EXECUTABLE ${COMPILER_PREFIX}arm-none-eabi-ld)
 #set(CMAKE_CXX_LINK_EXECUTABLE ${COMPILER_PREFIX}arm-none-eabi-ld)
 
+# Removes invalid (default) flags on OSX
+SET(CMAKE_C_LINK_FLAGS "")
+SET(CMAKE_CXX_LINK_FLAGS "")
+
 # Set other tools
 set(OBJSIZE ${COMPILER_PREFIX}arm-none-eabi-size)
 set(OBJCOPY ${COMPILER_PREFIX}arm-none-eabi-objcopy)

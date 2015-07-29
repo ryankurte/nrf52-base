@@ -41,13 +41,20 @@ set(QUIET_BUILD "")
 ##### Files #####
 
 # Add project headers
-include_directories(${BASE_LOCATION}/work/include)
+include_directories(
+	${BASE_LOCATION}/work/include
+	${BASE_LOCATION}/lib/components/device/
+	${BASE_LOCATION}/lib/components/toolchain/
+	${BASE_LOCATION}/lib/components/toolchain/gcc
+	)
 
 # Add project sources
 set(SOURCES
 	${BASE_LOCATION}/work/source/main.c
-	${BASE_LOCATION}/work/source/bsp.c
-	${BASE_LOCATION}/work/source/bsp_btn_ble.c
+	${BASE_LOCATION}/lib/components/toolchain/gcc/gcc_startup_nrf52.s
+	${BASE_LOCATION}/lib/components/toolchain/system_nrf52.c
+	#${BASE_LOCATION}/work/source/bsp.c
+	#${BASE_LOCATION}/work/source/bsp_btn_ble.c
 )
 
 ##### Modules #####
@@ -58,10 +65,10 @@ set(SOURCES
 
 # nRF components enabled here
 # Check out the related component folders for options
-set(DRIVERS_NRF hal common delay config gpiote trace pstorage timer ble_flash uart)
-set(LIBRARIES util trace timer scheduler button uart fifo)
-set(BLE_MODULES ble_advertising)
-set(BLE_SERVICES ble_nus)
+#set(DRIVERS_NRF hal common delay config gpiote trace pstorage timer ble_flash uart)
+#set(LIBRARIES util trace timer scheduler button uart fifo)
+#set(BLE_MODULES ble_advertising)
+#set(BLE_SERVICES ble_nus)
 
 # Add base libs (emlib, CMSIS, device files)
 include(${BASE_LOCATION}/lib/nrf52-base.cmake)
