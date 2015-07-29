@@ -5,10 +5,9 @@ set(NRF_DRIVER_SOURCES "")
 
 foreach(DRIVER IN ITEMS ${DRIVERS_NRF})
 		if("${DRIVER}" STREQUAL "uart")
-		# TODO: add other timer components if definitions exist
-		set(NRF_LIB_SOURCES 
-			${NRF_LIB_SOURCES} 
-			${CMAKE_CURRENT_LIST_DIR}/uart/app_uart_fifo.c
+		# TODO: add other uart components somehow
+		set(NRF_DRIVER_SOURCES 
+			${NRF_DRIVER_SOURCES} 
 			${CMAKE_CURRENT_LIST_DIR}/uart/nrf_drv_uart.c
 			)
 		include_directories(${CMAKE_CURRENT_LIST_DIR}/uart)

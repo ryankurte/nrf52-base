@@ -18,18 +18,18 @@ set(TARGET nrf52-test)
 # Configure project and languages
 project(${TARGET} C CXX ASM)
 
-# Set efm32-base project location
+# Set project location
 set(BASE_LOCATION ${PROJECT_SOURCE_DIR})
 
-# Set the compiler (must be prior to project setup)
+# Set the compiler (must be called prior to project setup)
 include(${BASE_LOCATION}/lib/arm-gcc.cmake)
 
 # Set device
 if(NOT DEVICE)
 set(DEVICE nRF52832)
 set(BOARD BOARD_PCA10036)
+set(SOFTDEVICE S132)
 endif()
-
 
 # Set build
 if(NOT CMAKE_BUILD_TYPE)
@@ -41,20 +41,13 @@ set(QUIET_BUILD "")
 ##### Files #####
 
 # Add project headers
-include_directories(
-	${BASE_LOCATION}/work/include
-	${BASE_LOCATION}/lib/components/device/
-	${BASE_LOCATION}/lib/components/toolchain/
-	${BASE_LOCATION}/lib/components/toolchain/gcc
-	)
+include_directories(${BASE_LOCATION}/work/include)
 
 # Add project sources
 set(SOURCES
-	${BASE_LOCATION}/work/source/main.c
-	${BASE_LOCATION}/lib/components/toolchain/gcc/gcc_startup_nrf52.s
-	${BASE_LOCATION}/lib/components/toolchain/system_nrf52.c
-	#${BASE_LOCATION}/work/source/bsp.c
-	#${BASE_LOCATION}/work/source/bsp_btn_ble.c
+	${BASE_LOCATION}/work/source/uart_main.c
+	${BASE_LOCATION}/work/source/bsp.c
+	${BASE_LOCATION}/work/source/bsp_btn_ble.c
 )
 
 ##### Modules #####
@@ -65,12 +58,12 @@ set(SOURCES
 
 # nRF components enabled here
 # Check out the related component folders for options
-#set(DRIVERS_NRF hal common delay config gpiote trace pstorage timer ble_flash uart)
-#set(LIBRARIES util trace timer scheduler button uart fifo)
-#set(BLE_MODULES ble_advertising)
-#set(BLE_SERVICES ble_nus)
+set(DRIVERS_NRF hal common delay config gpiote trace pstorage timer ble_flash uart)
+set(LIBRARIES util trace timer scheduler button uart fifo)
+set(BLE_MODULES ble_advertising)
+set(BLE_SERVICES ble_nus)
 
-# Add base libs (emlib, CMSIS, device files)
+# Add nRF52 base support
 include(${BASE_LOCATION}/lib/nrf52-base.cmake)
 
 ##### Outputs #####
