@@ -16,6 +16,7 @@ install:
     - sudo apt-get install gcc-multilib
     - sudo apt-get install gcc-arm-none-eabi
     - sudo apt-get install g++-multilib
+    - ./bootstrap.sh
 
 script:
     - make
