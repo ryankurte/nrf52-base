@@ -4,6 +4,8 @@ sudo: false
 
 install:
     - source ./armenv.sh
+    - echo $PATH
+    - which arm-none-eabi-gcc
     - ./bootstrap.sh
 
 script:
