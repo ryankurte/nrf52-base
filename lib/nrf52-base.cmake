@@ -8,6 +8,7 @@ endif(NOT DEFINED DEVICE)
 
 # Convert to upper case
 string(TOUPPER ${DEVICE} DEVICE_U)
+string(TOLOWER ${DEVICE} DEVICE_L)
 
 # Determine device family
 string(REGEX MATCH "^(NRF5[1-2])" CPU_FAMILY_U "${DEVICE_U}")

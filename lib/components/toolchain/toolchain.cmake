@@ -6,14 +6,14 @@ include_directories(
 	)
 
 set(TOOLCHAIN_SOURCES
-	${CMAKE_CURRENT_LIST_DIR}/system_nrf52.c
+	${CMAKE_CURRENT_LIST_DIR}/system_${CPU_FAMILY_L}.c
 )
 
-set(STARTUP_FILE ${CMAKE_CURRENT_LIST_DIR}/gcc/gcc_startup_nrf52.s)
+set(STARTUP_FILE ${CMAKE_CURRENT_LIST_DIR}/gcc/gcc_startup_${CPU_FAMILY_L}.s)
 
 set(LINKER_TEMPLATE_LOC ${CMAKE_CURRENT_LIST_DIR}/gcc/)
 
-set(BASE_LD ${CMAKE_CURRENT_LIST_DIR}/gcc/nrf52_xxaa.ld)
+set(BASE_LD ${CMAKE_CURRENT_LIST_DIR}/gcc/${CPU_FAMILY_L}_xxaa.ld)
 
 add_library(toolchain ${STARTUP_FILE} ${TOOLCHAIN_SOURCES})
 
