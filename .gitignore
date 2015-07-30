@@ -5,3 +5,4 @@
 .sdk
 lib/components/*
 build/
+builds/
