@@ -1,6 +1,8 @@
 # nrf52-base
 
-STATUS: not yet working
+STATUS: builds for the nRF52 family
+
+[![Build Status](https://travis-ci.org/ryankurte/nrf52-base.svg)](https://travis-ci.org/ryankurte/nrf52-base)
 
 ## TODO
 
