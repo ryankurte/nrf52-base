@@ -8,6 +8,7 @@ addons:
     - libgd2-xpm
 
 install:
+    - ./bootstrap.sh
     - source armenv.sh
 
 script:
