@@ -7,8 +7,8 @@ include_directories(
 # Add source files
 set(BLE_SOURCES
 	${CMAKE_CURRENT_LIST_DIR}/common/ble_advdata.c
-	${CMAKE_CURRENT_LIST_DIR}/common/ble_advdata_parser.c
 	${CMAKE_CURRENT_LIST_DIR}/common/ble_conn_params.c
+	${CMAKE_CURRENT_LIST_DIR}/common/ble_conn_state.c
 	${CMAKE_CURRENT_LIST_DIR}/common/ble_srv_common.c
 )
 

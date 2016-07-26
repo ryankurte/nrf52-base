@@ -3,6 +3,7 @@
 include_directories(
 	${CMAKE_CURRENT_LIST_DIR}
 	${CMAKE_CURRENT_LIST_DIR}/gcc
+    ${CMAKE_CURRENT_LIST_DIR}/CMSIS/Include
 	)
 
 set(TOOLCHAIN_SOURCES

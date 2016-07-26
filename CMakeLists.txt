@@ -59,7 +59,7 @@ set(SOURCES
 # nRF components enabled here
 # Check out the related component folders for options
 set(DRIVERS_NRF hal common delay config gpiote trace pstorage timer ble_flash uart)
-set(LIBRARIES util trace timer scheduler button uart fifo)
+set(LIBRARIES util trace timer scheduler button uart fifo fstorage experimental_section_vars)
 set(BLE_MODULES ble_advertising)
 set(BLE_SERVICES ble_nus)
 

@@ -3,6 +3,11 @@
 # Add source files
 set(NRF_DRIVER_SOURCES "")
 
+# Include nosd driver if no softdevice is used
+if(NOT DEFINED SOFTDEVICE)
+set(DRIVERS_NRF ${DRIVERS_NRF} nrf_soc_nosd)
+endif()
+
 foreach(DRIVER IN ITEMS ${DRIVERS_NRF})
 		if("${DRIVER}" STREQUAL "uart")
 		# TODO: add other uart components somehow
@@ -20,6 +25,6 @@ foreach(DRIVER IN ITEMS ${DRIVERS_NRF})
 endforeach(DRIVER IN ITEMS ${DRIVERS_NRF})
 
 # Create nrf driver library
-add_library(drivers-nrf ${NRF_DRIVER_SOURCES} ${NRF_DRIVER_NOSD_SOURCES})
+add_library(drivers-nrf ${NRF_DRIVER_SOURCES})
 
 set(LIBS ${LIBS} drivers-nrf)
