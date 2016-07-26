@@ -1,8 +1,13 @@
 .DS_Store
 *.o
+*.hex
+*.elf
+*.map
+*.bin
 *.zip
 .env
 .sdk
 lib/components/*
+lib/documentation/*
 build/
 builds/

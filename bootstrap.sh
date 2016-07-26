@@ -23,5 +23,6 @@ unzip -o -d $WORKING_DIR -q $WORKING_DIR/$SDK_FILE
 
 echo "Merging into project"
 cp -rf $WORKING_DIR/components lib/
+cp -rf $WORKING_DIR/documentation lib/
 
 echo "Bootstrapping complete"
