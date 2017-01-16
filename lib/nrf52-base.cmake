@@ -25,11 +25,15 @@ include(${CMAKE_CURRENT_LIST_DIR}/components/ble/ble.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/components/libraries/libraries.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/components/drivers_nrf/drivers-nrf.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/components/drivers_ext/drivers-ext.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/components/serialization/serialization.cmake)
+
+message("*******************************************")
+message("Device: ${DEVICE_U} Family: ${CPU_FAMILY_U}")
 
 # Set compiler flags
 # Common arguments
 # TODO: --specs=nano.specs
-set(COMMON_DEFINITIONS "${OPTIONAL_DEBUG_SYMBOLS} -D${CPU_FAMILY_U} -D${BOARD}")
+set(COMMON_DEFINITIONS "${OPTIONAL_DEBUG_SYMBOLS} -D${CPU_FAMILY_U} -D${DEVICE_U} -D${BOARD}")
 set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfloat-abi=hard -mfpu=fpv4-sp-d16")
 set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin")
 set(COMMON_DEFINITIONS "${COMMON_DEFINITIONS} -DSWI_DISABLE0 -DCONFIG_GPIO_AS_PINRESET ")
