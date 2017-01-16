@@ -1,6 +1,7 @@
 # nrf52-base
 
 STATUS: preliminary support, builds for the nRF52 family and S132 SoftDevice.  
+Commit 8b1612498a0af3ff86c388b101c0614f3d1ded92 working with old SDK. Current master isn't running correctly, probably a linker / location issue but haven't had time to fix as yet.
 
 [![Build Status](https://travis-ci.org/ryankurte/nrf52-base.svg)](https://travis-ci.org/ryankurte/nrf52-base)
 
